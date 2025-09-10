@@ -3,7 +3,14 @@ import Overview from "../page/manager/Overview/index";
 import Category from "../page/manager/Category/index";
 
 const publicRoutes = [
-  
+  { path: "/", component: HomePage, layout: DefaultLayout },
+  { path: "/login", component: Login, layout: EmptyLayout, publicOnly: true },
+  {
+    path: "/register",
+    component: Register,
+    layout: EmptyLayout,
+    publicOnly: true,
+  },
 ];
 
 const privateRoutes = [

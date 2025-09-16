@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DanhMucController;
-use App\Http\Controllers\KhachHangController;
 use App\Http\Controllers\SanPhamController;
+use App\Http\Controllers\DonHangController;
+use App\Http\Controllers\HoaDonController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -39,8 +40,19 @@ Route::get('/danh-muc/{danhMucId}/san-pham', [SanPhamController::class, 'getByCa
 // Additional route to get products by warehouse
 Route::get('/san-pham/kho/{khoId}', [SanPhamController::class, 'getByWarehouse']); // Lấy sản phẩm theo kho
 
+//DonHang (Products) CRUD routes
 Route::post('/ban-hang/san-pham', [SanPhamController::class, 'search']); //Tìm sản phẩm
+Route::post('/ban-hang/tao-don', [DonHangController::class, 'taoDon']); //Tạo đơn hàng
+// Route::get('/ban-hang/khach-hang', [KhachHangController::class, 'timKiem']); //Tìm khách hàng
+// Route::post('/ban-hang/them-khach-hang', [KhachHangController::class, 'themKhachHang']); //Thêm khách hàng
+Route::post('/thanh-toan', [DonHangController::class, 'thanhToan']); //Thanh toán
 
-
+//HoaDon
+Route::prefix('hoa-don')->group(function () {
+    Route::get('/', [HoaDonController::class, 'index']); // lọc & tìm kiếm
+    Route::put('/{id}', [HoaDonController::class, 'update']); // cập nhật
+    Route::get('/{id}', [HoaDonController::class, 'show']); // lấy chi tiết hóa đơn
+    Route::delete('/{id}', [HoaDonController::class, 'destroy']); // xóa
+});
 
 });

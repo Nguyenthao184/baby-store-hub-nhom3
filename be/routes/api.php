@@ -4,7 +4,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DanhMucController;
 use App\Http\Controllers\KhachHangController;
 use App\Http\Controllers\SanPhamController;
-use App\Http\Controllers\DonHangController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -42,15 +41,6 @@ Route::get('/san-pham/kho/{khoId}', [SanPhamController::class, 'getByWarehouse']
 
 Route::post('/ban-hang/san-pham', [SanPhamController::class, 'search']); //Tìm sản phẩm
 
-//DonHang (Products) CRUD routes
-Route::post('/ban-hang/san-pham', [SanPhamController::class, 'search']); //Tìm sản phẩm
-Route::post('/ban-hang/tao-don', [DonHangController::class, 'taoDon']); //Tạo đơn hàng
-Route::get('/ban-hang/khach-hang', [KhachHangController::class, 'timKiem']); //Tìm khách hàng
-Route::post('/ban-hang/them-khach-hang', [KhachHangController::class, 'themKhachHang']); //Thêm khách hàng
-Route::post('/thanh-toan', [DonHangController::class, 'thanhToan']); //Thanh toán
 
-//Khách hàng
-Route::get('/khach-hang', [KhachHangController::class, 'timKiem']);
-Route::post('/khach-hang', [KhachHangController::class, 'themKhachHang']);
 
 });
